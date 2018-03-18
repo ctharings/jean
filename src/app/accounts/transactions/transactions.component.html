@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        <span *ngIf="selectedAccount.id; else prompt">Editing {{originalName}}</span>
+        <ng-template #prompt>Create</ng-template>
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+  <form (submit)="saved.emit(selectedAccount)">
+    <mat-card-content>
+      <mat-input-container class="full-width">
+        <input matInput placeholder="First Name" [(ngModel)]="selectedAccount.name.first" type="text" name="name.first">
+      </mat-input-container>
+      <mat-input-container class="full-width">
+        <input matInput placeholder="Last Name" [(ngModel)]="selectedAccount.name.last" type="text" name="name.last">
+      </mat-input-container>
+      <mat-input-container class="full-width">
+        <input matInput placeholder="Email" [(ngModel)]="selectedAccount.email" type="email" name="email">
+      </mat-input-container>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button>Save</button>
+      <button type="button" mat-button (click)="cancelled.emit(selectedAccount)">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,29 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
+import { AppMaterialModule } from './app-material.module';
 
-import { DataService } from './shared';
+import { AccountsService } from './shared';
 
-import { AccountComponent } from './account/account.component';
 import { AppComponent } from './app.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountsListComponent } from './accounts/accounts-list/accounts-list.component';
+import { TransactionsComponent } from './accounts/transactions/transactions.component';
 import { HomeComponent } from './home/home.component';
-import { TransactionComponent } from './transaction/transaction.component';
+import { AccountComponent } from './accounts/account/account.component';
 
 
 @NgModule({
   declarations: [
-    AccountComponent,
     AppComponent,
     HomeComponent,
-    TransactionComponent
+    AccountsComponent,
+    AccountsListComponent,
+    TransactionsComponent,
+    AccountComponent
   ],
   imports: [
-    AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    AppMaterialModule
   ],
-  providers: [DataService],
+  providers: [AccountsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

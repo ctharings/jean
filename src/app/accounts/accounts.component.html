@@ -1,0 +1,9 @@
+<div class="container">
+  <app-accounts-list class="col-50" [accounts]="accounts"
+                  (selected)="selectAccount($event)"
+                  (deleted)="deleteAccount($event)">
+  </app-accounts-list>
+
+  <app-transactions class="col-50" [account]="currentAccount">
+  </app-transactions>
+</div>

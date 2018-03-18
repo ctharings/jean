@@ -1,1 +1,2 @@
-export { DataService } from './data.service';
+export { AccountsService } from './accounts.service';
+export { Account } from './account.model';

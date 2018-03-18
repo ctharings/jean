@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AccountsService, Account } from '../shared';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  accounts: Account[];
 
   constructor(
-    private router: Router
+    private accountsService: AccountsService
   ) { }
 
   ngOnInit() {
+    this.getAccounts();
   }
 
+  getAccounts() {
+    this.accountsService.all()
+      .subscribe(accounts => this.accounts = accounts );
+  }
+
+  handleResults(accounts) {
+    this.accounts = accounts;
+  }
 }
