@@ -33,36 +33,4 @@ export class AccountsComponent implements OnInit {
     this.accountsService.all()
       .subscribe(accounts => this.accounts = accounts);
   }
-
-  saveAccount(account) {
-    if (!account.id) {
-      this.createAccount(account);
-    } else {
-      this.updateAccount(account);
-    }
-  }
-
-  createAccount(account) {
-    this.accountsService.create(account)
-      .subscribe(response => {
-        this.getAccounts();
-        this.resetCurrentAccount();
-      });
-  }
-
-  updateAccount(account) {
-    this.accountsService.update(account)
-      .subscribe(response => {
-        this.getAccounts();
-        this.resetCurrentAccount();
-      });
-  }
-
-  deleteAccount(account) {
-    this.accountsService.delete(account)
-      .subscribe(response => {
-        this.getAccounts();
-        this.resetCurrentAccount();
-      });
-  }
 }
