@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Account } from '../../shared';
 
 @Component({
@@ -9,8 +9,7 @@ import { Account } from '../../shared';
 export class TransactionsComponent {
   originalName: string;
   selectedAccount: Account;
-  @Output() saved = new EventEmitter();
-  @Output() cancelled = new EventEmitter();
+  displayedColumns = ['index', 'amount', 'registered', 'company'];
 
   @Input() set account(value: Account) {
     if (value) { this.originalName = `${value.name.first} ${value.name.last}`; }

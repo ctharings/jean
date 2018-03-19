@@ -34,7 +34,6 @@ export class AccountsListComponent implements OnInit {
   @Input() accounts: Account[];
   @Input() readonly = false;
   @Output() selected = new EventEmitter();
-  @Output() deleted = new EventEmitter();
 
   animationsDisabled = true;
 

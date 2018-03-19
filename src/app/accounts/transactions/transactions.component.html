@@ -1,27 +1,41 @@
-<mat-card>
+<mat-card *ngIf="selectedAccount.id">
   <mat-card-header>
     <mat-card-title>
-      <h1>
-        <span *ngIf="selectedAccount.id; else prompt">Editing {{originalName}}</span>
-        <ng-template #prompt>Create</ng-template>
-      </h1>
+      <h1>Transactions for {{originalName}}</h1>
     </mat-card-title>
   </mat-card-header>
-  <form (submit)="saved.emit(selectedAccount)">
-    <mat-card-content>
-      <mat-input-container class="full-width">
-        <input matInput placeholder="First Name" [(ngModel)]="selectedAccount.name.first" type="text" name="name.first">
-      </mat-input-container>
-      <mat-input-container class="full-width">
-        <input matInput placeholder="Last Name" [(ngModel)]="selectedAccount.name.last" type="text" name="name.last">
-      </mat-input-container>
-      <mat-input-container class="full-width">
-        <input matInput placeholder="Email" [(ngModel)]="selectedAccount.email" type="email" name="email">
-      </mat-input-container>
-    </mat-card-content>
-    <mat-card-actions>
-      <button type="submit" mat-button>Save</button>
-      <button type="button" mat-button (click)="cancelled.emit(selectedAccount)">Cancel</button>
-    </mat-card-actions>
-  </form>
+  <mat-card-content>
+    <mat-table #table [dataSource]="selectedAccount.transactions">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="index">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let i = index"> {{i + 1}} </mat-cell>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount | currency}} </mat-cell>
+      </ng-container>
+
+      <!-- Registered Column -->
+      <ng-container matColumnDef="registered">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.registered | date:'medium'}} </mat-cell>
+      </ng-container>
+
+      <!-- Company Column -->
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef> Company </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.company | titlecase}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
 </mat-card>

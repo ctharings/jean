@@ -6,16 +6,16 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list [@listAnimation]="prepareListState()" [@.disabled]="animationsDisabled">
-      <mat-list-item *ngFor="let account of accounts; trackBy: trackAccount" (click)="selected.emit(account)" class="record">
+      <mat-list-item *ngFor="let account of accounts; trackBy: trackAccount" (click)="selected.emit(account)" class="record" [ngClass]="{inactive: !account.isActive}">
         <h3 matLine>{{account.name.first}} {{account.name.last}}</h3>
-        <button *ngIf="!readonly" mat-icon-button>
-          <mat-icon>close</mat-icon>
-        </button>
-        <p matLine *ngFor="let transaction of account.transactions; index as i">
-          <span>{{i+1}}</span>
-          <span>{{transaction.amount | currency}}</span>
-          <span>{{transaction.registered | date}}</span>
-          <span>{{transaction.company | titlecase}}</span>
+        <p matLine>
+          Email: {{account.email}}
+        </p>
+        <p matLine>
+          Active: {{account.isActive + '' | titlecase}}
+        </p>
+        <p matLine>
+          Transactions: {{account.transactions.length}}
         </p>
       </mat-list-item>
     </mat-list>

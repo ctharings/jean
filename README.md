@@ -2,9 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+There are two main parts to this application. The first is the REST API, for which we are using `express.js`. The second part is the Angular application server which we will start using `ng serve`.  
+
+To get started run the commands below.
+
+```bash
+$ git clone https://github.com/ctharings/jean.git
+$ cd jean
+$ npm install
+$ npm start
+```
+
+Then navigate to [http://localhost:4200](http://localhost:4200/#/items) in your browser.
+
+> Note: the above terminal commands are for Mac. Remember to substitute the appropriate commands for your OS.
 
 ## Code scaffolding
 
@@ -13,14 +26,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 

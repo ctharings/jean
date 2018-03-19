@@ -1,5 +1,20 @@
-mat-list-item:not(:first-of-type) {
-  border-top: 1px solid #efefef;
+mat-list-item {
+  cursor: pointer;
+
+  &:not(:first-of-type) {
+    border-top: 1px solid #efefef;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  &.inactive:hover {
+    background: {
+      color: transparent;
+      image: linear-gradient(135deg, #EE617D 25%, transparent 25%, transparent 50%, #EE617D 50%, #EE617D 75%, transparent 75%, transparent 100%);
+      repeat: repeat;
+      size: 56.57px 56.57px;
+    }
+  }
 }
 
 .symbol {
